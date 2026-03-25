@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600;1,6..72,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Playfair Display", "Newsreader", serif;
+  --font-headline: "Newsreader", serif;
+  --font-body: "Newsreader", serif;
+  --font-label: "Inter", sans-serif;
+
+  --color-primary: #1A237E;
+  --color-background-light: #f6f6f8;
+  --color-background-dark: #121320;
+  --color-secondary-fixed-dim: #dacdff;
+  --color-surface-container-high: #e9e8e3;
+  --color-on-surface: #31332f;
+  --color-surface-container: #efeee9;
+  --color-primary-dim: #414aa3;
+  --color-on-tertiary-container: #004d58;
+  --color-secondary-container: #e8deff;
+  --color-inverse-surface: #0e0e0d;
+  --color-on-error-container: #68001f;
+  --color-surface-dim: #dadad4;
+  --color-secondary-fixed: #e8deff;
+  --color-on-surface-variant: #5e605b;
+  --color-on-primary-fixed-variant: #323b94;
+  --color-error: #ac3149;
+  --color-surface-bright: #fbf9f5;
+  --color-outline-variant: #b2b2ad;
+  --color-error-dim: #770326;
+  --color-tertiary-dim: #005c68;
+  --color-on-background: #31332f;
+  --color-on-tertiary-fixed: #003840;
+  --color-on-secondary-fixed-variant: #652fe7;
+  --color-primary-fixed: #b6bcff;
+  --color-tertiary-fixed-dim: #3cd2eb;
+  --color-surface-container-low: #f5f3ef;
+  --color-primary-fixed-dim: #a5adff;
+  --color-on-primary-fixed: #0f1876;
+  --color-background: #fbf9f5;
+  --color-surface: #fbf9f5;
+  --color-tertiary: #006977;
+  --color-on-secondary: #fdf7ff;
+  --color-on-secondary-fixed: #4700bd;
+  --color-secondary-dim: #5c20df;
+  --color-inverse-primary: #929bfa;
+  --color-surface-container-highest: #e3e3dd;
+  --color-on-primary: #fbf8ff;
+  --color-on-tertiary: #edfbff;
+  --color-outline: #7a7b76;
+  --color-surface-variant: #e3e3dd;
+  --color-on-secondary-container: #5b1edd;
+  --color-primary-container: #b6bcff;
+  --color-surface-tint: #4d56b0;
+  --color-tertiary-container: #50e1f9;
+  --color-on-tertiary-fixed-variant: #005763;
+  --color-secondary: #6834eb;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-error: #fff7f7;
+  --color-error-container: #f76a80;
+  --color-inverse-on-surface: #9e9d99;
+  --color-on-primary-container: #29328b;
+  --color-tertiary-fixed: #50e1f9;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+  font-family: var(--font-label);
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.ease-out-expo {
+  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(24px);
+  border-top: 0.5px solid rgba(255, 255, 255, 0.4);
+}
+.holographic-overlay {
+  background: linear-gradient(135deg, rgba(104, 52, 235, 0.1) 0%, rgba(60, 210, 235, 0.1) 50%, rgba(104, 52, 235, 0.1) 100%);
+  mix-blend-mode: soft-light;
+}
+.text-shadow-sm { text-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+.pulse-aura {
+  filter: blur(40px);
+  background: #3cd2eb;
+  opacity: 0.15;
+}
+
+/* Custom Auto-Hiding Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+body.is-scrolling ::-webkit-scrollbar-thumb {
+  background-color: var(--color-outline-variant);
+}
+
+body.is-scrolling ::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-outline);
+}
+
+/* Firefox support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+body.is-scrolling * {
+  scrollbar-color: var(--color-outline-variant) transparent;
+}
+
+/* Ensure no-scrollbar utility still works */
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+}
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
