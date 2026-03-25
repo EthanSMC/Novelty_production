@@ -125,21 +125,6 @@ export default function Reading() {
             </p>
           </button>
         </div>
-
-        {/* Generate Button Area */}
-        <div className="mt-20 flex flex-col items-center">
-          <div className="mb-8 w-px h-16 bg-gradient-to-b from-outline-variant/30 to-transparent"></div>
-          <button className="group relative px-10 py-5 bg-primary text-on-primary rounded-full font-label font-semibold tracking-wide shadow-xl shadow-primary/20 hover:scale-105 active:scale-95 transition-all duration-300 ease-out-expo overflow-hidden">
-            <span className="relative z-10 flex items-center gap-3">
-              <Sparkles className="w-5 h-5 fill-current" />
-              Generate Next Chapter
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-secondary to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          </button>
-          <p className="mt-6 font-label text-[10px] text-on-surface-variant uppercase tracking-[0.2em] opacity-60">
-            Estimated Generation Time: 4 Seconds
-          </p>
-        </div>
       </section>
 
       {/* Background Decoration */}
