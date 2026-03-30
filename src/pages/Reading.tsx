@@ -1,54 +1,83 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ChevronLeft, ChevronRight, Zap, Wand2, Shield, BrainCircuit, Sparkles } from 'lucide-react';
 
 export default function Reading() {
+  const navigate = useNavigate();
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [chapter, setChapter] = useState(14);
+
+  const handleChoice = (choice: string) => {
+    setIsGenerating(true);
+    // Simulate API call to generate next chapter
+    setTimeout(() => {
+      setChapter(prev => prev + 1);
+      setIsGenerating(false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 2000);
+  };
+
   return (
     <main className="py-8 max-w-3xl mx-auto px-6 md:px-12 relative">
+      <div className="mb-8">
+        <button 
+          onClick={() => navigate(-1)}
+          className="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors font-label text-sm uppercase tracking-widest font-bold"
+        >
+          <ChevronLeft className="w-4 h-4" />
+          Back
+        </button>
+      </div>
       {/* Chapter Header */}
       <section className="mb-16 text-center">
         <span className="font-label text-xs uppercase tracking-[0.3em] text-on-surface-variant mb-4 block">
-          Chapter XIV
+          Chapter {chapter === 14 ? 'XIV' : 'XV'}
         </span>
         <h1 className="font-headline text-5xl md:text-6xl text-on-surface mb-8 tracking-tight">
-          The Obsidian Gate
+          {chapter === 14 ? 'The Obsidian Gate' : 'Beyond the Void'}
         </h1>
         <div className="w-12 h-[1px] bg-outline-variant/30 mx-auto"></div>
       </section>
 
       {/* Reading Canvas */}
-      <article className="font-body text-xl md:text-2xl leading-relaxed text-on-surface space-y-10 selection:bg-primary-container selection:text-on-primary-container">
-        <p>
-          The air within the vault hung heavy with the scent of ozone and ancient parchment. Elara stepped forward, her boots clicking softly against the polished stone floor. Before her stood the Obsidian Gate, its surface swirling with a dark, iridescent fluid that seemed to swallow the light from her lantern.
-        </p>
-        <p>
-          "It’s waiting," Kael whispered from the shadows behind her. His hand rested on the hilt of his blade, his eyes darting toward the flickering runes etched into the archway. "The AI within the core has calculated three billion possible outcomes for this moment. Only one leads us out of here alive."
-        </p>
-        <div className="relative group my-12">
-          <div className="absolute -inset-4 pulse-aura rounded-full"></div>
-          <p className="relative italic text-on-surface-variant border-l-2 border-primary-dim/20 pl-6 py-2">
-            "The path you choose is not merely a direction, Elara. It is a rewrite of reality itself."
-          </p>
-        </div>
-        <p>
-          Elara reached out, her fingers inches from the cold, shifting surface. The Gate pulsed. A low hum vibrated through her teeth, a digital song harmonizing with the beating of her own heart. She could feel the narrative threads fraying around her—the story was reaching a nexus point, and the Architect was watching.
-        </p>
-        <p>
-          She turned back to Kael, but his form was already beginning to pixelate at the edges, caught in the flux of the pending decision. The choice was hers, and the silence of the vault was the loudest thing she had ever heard.
-        </p>
+      <article className={`font-body text-xl md:text-2xl leading-relaxed text-on-surface space-y-10 selection:bg-primary-container selection:text-on-primary-container transition-opacity duration-500 ${isGenerating ? 'opacity-30' : 'opacity-100'}`}>
+        {chapter === 14 ? (
+          <>
+            <p>
+              The air within the vault hung heavy with the scent of ozone and ancient parchment. Elara stepped forward, her boots clicking softly against the polished stone floor. Before her stood the Obsidian Gate, its surface swirling with a dark, iridescent fluid that seemed to swallow the light from her lantern.
+            </p>
+            <p>
+              "It’s waiting," Kael whispered from the shadows behind her. His hand rested on the hilt of his blade, his eyes darting toward the flickering runes etched into the archway. "The AI within the core has calculated three billion possible outcomes for this moment. Only one leads us out of here alive."
+            </p>
+            <div className="relative group my-12">
+              <div className="absolute -inset-4 pulse-aura rounded-full"></div>
+              <p className="relative italic text-on-surface-variant border-l-2 border-primary-dim/20 pl-6 py-2">
+                "The path you choose is not merely a direction, Elara. It is a rewrite of reality itself."
+              </p>
+            </div>
+            <p>
+              Elara reached out, her fingers inches from the cold, shifting surface. The Gate pulsed. A low hum vibrated through her teeth, a digital song harmonizing with the beating of her own heart. She could feel the narrative threads fraying around her—the story was reaching a nexus point, and the Architect was watching.
+            </p>
+            <p>
+              She turned back to Kael, but his form was already beginning to pixelate at the edges, caught in the flux of the pending decision. The choice was hers, and the silence of the vault was the loudest thing she had ever heard.
+            </p>
+          </>
+        ) : (
+          <>
+            <p>
+              The transition was instantaneous. One moment, the cold stone of the vault surrounded her; the next, she was falling through a kaleidoscope of fragmented code and blinding light. The sensation of gravity vanished, replaced by a profound weightlessness.
+            </p>
+            <p>
+              "Kael!" she shouted, but her voice produced no sound. Instead, the word materialized before her as a string of glowing, golden characters that quickly dissolved into the surrounding chaos.
+            </p>
+            <p>
+              She had made her choice, and the Architect had responded. The reality she knew was gone, replaced by the raw, uncompiled structure of the universe. She needed to find an anchor, a piece of stable logic, before her own consciousness was overwritten by the endless stream of data.
+            </p>
+          </>
+        )}
       </article>
 
-      {/* Page Turn Indicator (Visual Only) */}
-      <div className="flex justify-between items-center mt-20 opacity-20 group cursor-default select-none">
-        <div className="flex items-center gap-2">
-          <ChevronLeft className="w-4 h-4" />
-          <span className="text-xs uppercase tracking-widest">Previous Page</span>
-        </div>
-        <div className="w-1.5 h-1.5 rounded-full bg-on-surface"></div>
-        <div className="flex items-center gap-2">
-          <span className="text-xs uppercase tracking-widest">Next Page</span>
-          <ChevronRight className="w-4 h-4" />
-        </div>
-      </div>
+
 
       {/* Choose Your Destiny Section */}
       <section className="mt-32">
@@ -62,7 +91,11 @@ export default function Reading() {
         {/* Bento Grid Options */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Option A */}
-          <button className="group text-left p-6 rounded-xl bg-surface-container-low hover:bg-secondary-container transition-all duration-300 ease-out-expo border border-outline-variant/10">
+          <button 
+            onClick={() => handleChoice('A')}
+            disabled={isGenerating}
+            className="group text-left p-6 rounded-xl bg-surface-container-low hover:bg-secondary-container transition-all duration-300 ease-out-expo border border-outline-variant/10 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
             <div className="flex justify-between items-start mb-4">
               <span className="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center font-label font-bold text-xs group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
                 A
@@ -78,7 +111,11 @@ export default function Reading() {
           </button>
 
           {/* Option B */}
-          <button className="group text-left p-6 rounded-xl bg-surface-container-low hover:bg-secondary-container transition-all duration-300 ease-out-expo border border-outline-variant/10">
+          <button 
+            onClick={() => handleChoice('B')}
+            disabled={isGenerating}
+            className="group text-left p-6 rounded-xl bg-surface-container-low hover:bg-secondary-container transition-all duration-300 ease-out-expo border border-outline-variant/10 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
             <div className="flex justify-between items-start mb-4">
               <span className="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center font-label font-bold text-xs group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
                 B
@@ -94,7 +131,11 @@ export default function Reading() {
           </button>
 
           {/* Option C */}
-          <button className="group text-left p-6 rounded-xl bg-surface-container-low hover:bg-secondary-container transition-all duration-300 ease-out-expo border border-outline-variant/10">
+          <button 
+            onClick={() => handleChoice('C')}
+            disabled={isGenerating}
+            className="group text-left p-6 rounded-xl bg-surface-container-low hover:bg-secondary-container transition-all duration-300 ease-out-expo border border-outline-variant/10 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
             <div className="flex justify-between items-start mb-4">
               <span className="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center font-label font-bold text-xs group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
                 C
@@ -110,7 +151,11 @@ export default function Reading() {
           </button>
 
           {/* Option D */}
-          <button className="group text-left p-6 rounded-xl bg-surface-container-low hover:bg-secondary-container transition-all duration-300 ease-out-expo border border-outline-variant/10">
+          <button 
+            onClick={() => handleChoice('D')}
+            disabled={isGenerating}
+            className="group text-left p-6 rounded-xl bg-surface-container-low hover:bg-secondary-container transition-all duration-300 ease-out-expo border border-outline-variant/10 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
             <div className="flex justify-between items-start mb-4">
               <span className="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center font-label font-bold text-xs group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
                 D

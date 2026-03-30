@@ -6,12 +6,14 @@ import Store from './pages/Store.tsx';
 import Bookshelf from './pages/Bookshelf.tsx';
 import Profile from './pages/Profile.tsx';
 import Reading from './pages/Reading.tsx';
+import Login from './pages/Login.tsx';
 import './index.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
+        <Route path="/login" element={<Login />} />
         <Route path="/" element={<App />}>
           <Route index element={<Navigate to="/store" replace />} />
           <Route path="store" element={<Store />} />

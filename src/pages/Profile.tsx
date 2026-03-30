@@ -1,7 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Pencil, Settings, BrainCircuit, CreditCard, BookTemplate, LogOut, ChevronRight } from 'lucide-react';
 
 export default function Profile() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('isAuthenticated');
+    navigate('/login');
+  };
+
   return (
     <main className="py-8 px-6 max-w-2xl mx-auto space-y-8">
       {/* Profile Hero Section */}
@@ -90,7 +98,7 @@ export default function Profile() {
 
       {/* Logout Section */}
       <section className="pt-4">
-        <button className="w-full flex items-center justify-center gap-2 p-4 rounded-xl text-error bg-error/5 hover:bg-error/10 transition-colors duration-300 border border-error/10">
+        <button onClick={handleLogout} className="w-full flex items-center justify-center gap-2 p-4 rounded-xl text-error bg-error/5 hover:bg-error/10 transition-colors duration-300 border border-error/10">
           <LogOut className="w-5 h-5" />
           <span className="font-label text-sm font-semibold uppercase tracking-widest">Logout</span>
         </button>

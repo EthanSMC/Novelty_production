@@ -5,14 +5,6 @@ import { Link } from 'react-router-dom';
 export default function Bookshelf() {
   return (
     <main className="py-8 px-6 max-w-7xl mx-auto">
-      {/* Hero Section / Welcome */}
-      <section className="mb-12">
-        <h2 className="font-headline text-4xl md:text-5xl font-bold text-on-surface tracking-tight mb-2">My Library</h2>
-        <p className="font-label text-sm text-on-surface-variant tracking-wide uppercase font-medium opacity-70">
-          3 STORIES IN PROGRESS • 12 MASTERPIECES
-        </p>
-      </section>
-
       {/* Stories in Progress (Asymmetric Bento Grid) */}
       <section className="mb-16">
         <div className="flex items-center justify-between mb-8">
@@ -22,8 +14,8 @@ export default function Bookshelf() {
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
           {/* Large Feature Story Card */}
-          <Link to="/read" className="md:col-span-8 group relative overflow-hidden rounded-xl bg-surface-container-low p-1 transition-all duration-500 hover:shadow-xl block">
-            <div className="relative h-[400px] w-full rounded-[calc(1.5rem-4px)] overflow-hidden">
+          <Link to="/read" className="md:col-span-8 group relative overflow-hidden rounded-xl bg-surface-container-low p-1 transition-all duration-500 hover:shadow-xl flex flex-col">
+            <div className="relative flex-grow w-full rounded-[calc(1.5rem-4px)] overflow-hidden min-h-[400px]">
               <img
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 alt="Atmospheric mysterious forest at night with bioluminescent plants and floating embers, dark teal and indigo color palette"
@@ -112,14 +104,14 @@ export default function Bookshelf() {
         <div className="flex items-center justify-between mb-8">
           <h3 className="font-headline text-2xl italic font-semibold">Finished Masterpieces</h3>
           <span className="h-[1px] flex-grow mx-6 bg-outline-variant opacity-20"></span>
-          <button className="font-label text-xs font-bold text-primary uppercase tracking-widest hover:opacity-70 transition-opacity">
+          <Link to="/store" className="font-label text-xs font-bold text-primary uppercase tracking-widest hover:opacity-70 transition-opacity">
             View All
-          </button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
           {/* Book Item 1 */}
-          <div className="group cursor-pointer">
+          <Link to="/read" className="group cursor-pointer block">
             <div className="aspect-[2/3] w-full bg-surface-container-highest rounded-lg overflow-hidden mb-3 shadow-md group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
               <img
                 className="w-full h-full object-cover"
@@ -129,10 +121,10 @@ export default function Bookshelf() {
             </div>
             <h5 className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">The Last Librarian</h5>
             <p className="font-label text-[10px] text-on-surface-variant opacity-60 uppercase tracking-tighter">Completed Oct 2023</p>
-          </div>
+          </Link>
 
           {/* Book Item 2 */}
-          <div className="group cursor-pointer">
+          <Link to="/read" className="group cursor-pointer block">
             <div className="aspect-[2/3] w-full bg-surface-container-highest rounded-lg overflow-hidden mb-3 shadow-md group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
               <img
                 className="w-full h-full object-cover"
@@ -142,10 +134,10 @@ export default function Bookshelf() {
             </div>
             <h5 className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">Beyond Aether</h5>
             <p className="font-label text-[10px] text-on-surface-variant opacity-60 uppercase tracking-tighter">Completed Aug 2023</p>
-          </div>
+          </Link>
 
           {/* Book Item 3 */}
-          <div className="group cursor-pointer">
+          <Link to="/read" className="group cursor-pointer block">
             <div className="aspect-[2/3] w-full bg-surface-container-highest rounded-lg overflow-hidden mb-3 shadow-md group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
               <img
                 className="w-full h-full object-cover"
@@ -155,10 +147,10 @@ export default function Bookshelf() {
             </div>
             <h5 className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">Summit of Silence</h5>
             <p className="font-label text-[10px] text-on-surface-variant opacity-60 uppercase tracking-tighter">Completed Jun 2023</p>
-          </div>
+          </Link>
 
           {/* Book Item 4 */}
-          <div className="group cursor-pointer">
+          <Link to="/read" className="group cursor-pointer block">
             <div className="aspect-[2/3] w-full bg-surface-container-highest rounded-lg overflow-hidden mb-3 shadow-md group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
               <img
                 className="w-full h-full object-cover"
@@ -168,10 +160,10 @@ export default function Bookshelf() {
             </div>
             <h5 className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">Tides of Thought</h5>
             <p className="font-label text-[10px] text-on-surface-variant opacity-60 uppercase tracking-tighter">Completed May 2023</p>
-          </div>
+          </Link>
 
           {/* Book Item 5 */}
-          <div className="group cursor-pointer">
+          <Link to="/read" className="group cursor-pointer block">
             <div className="aspect-[2/3] w-full bg-surface-container-highest rounded-lg overflow-hidden mb-3 shadow-md group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
               <img
                 className="w-full h-full object-cover"
@@ -181,10 +173,10 @@ export default function Bookshelf() {
             </div>
             <h5 className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">Neon Genesis</h5>
             <p className="font-label text-[10px] text-on-surface-variant opacity-60 uppercase tracking-tighter">Completed Mar 2023</p>
-          </div>
+          </Link>
 
           {/* Book Item 6 */}
-          <div className="group cursor-pointer">
+          <Link to="/read" className="group cursor-pointer block">
             <div className="aspect-[2/3] w-full bg-surface-container-highest rounded-lg overflow-hidden mb-3 shadow-md group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
               <img
                 className="w-full h-full object-cover"
@@ -194,17 +186,17 @@ export default function Bookshelf() {
             </div>
             <h5 className="font-headline font-bold text-on-surface group-hover:text-primary transition-colors">Brass & Bone</h5>
             <p className="font-label text-[10px] text-on-surface-variant opacity-60 uppercase tracking-tighter">Completed Jan 2023</p>
-          </div>
+          </Link>
         </div>
       </section>
 
       {/* Floating Action Button */}
-      <button className="fixed right-6 bottom-24 z-50 w-16 h-16 bg-secondary text-on-secondary rounded-full shadow-lg hover:shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 ease-out-expo flex items-center justify-center group">
+      <Link to="/store" className="fixed right-6 bottom-24 z-50 w-16 h-16 bg-secondary text-on-secondary rounded-full shadow-lg hover:shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 ease-out-expo flex items-center justify-center group">
         <Plus className="w-8 h-8" />
         <span className="absolute right-full mr-4 px-4 py-2 bg-inverse-surface text-inverse-on-surface text-xs font-label rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
           New Story
         </span>
-      </button>
+      </Link>
     </main>
   );
 }

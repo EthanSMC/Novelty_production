@@ -1,11 +1,20 @@
 import React, { useEffect } from 'react';
-import { Outlet, Link, useLocation } from 'react-router-dom';
+import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom';
 import { Search, UserCircle, Library, Store } from 'lucide-react';
 import clsx from 'clsx';
 
 export default function Layout() {
   const location = useLocation();
+  const navigate = useNavigate();
   const isReading = location.pathname.startsWith('/read');
+
+  useEffect(() => {
+    // Simple mock auth check
+    const isAuthenticated = localStorage.getItem('isAuthenticated');
+    if (!isAuthenticated && location.pathname !== '/login') {
+      navigate('/login');
+    }
+  }, [location.pathname, navigate]);
 
   useEffect(() => {
     let scrollTimeout: NodeJS.Timeout;
@@ -67,9 +76,11 @@ export default function Layout() {
 
         <div className="flex items-center gap-4">
           {!isReading && (
-            <button className="p-2 rounded-full hover:bg-surface-container transition-all duration-300 ease-out-expo">
-              <Search className="text-primary w-5 h-5" />
-            </button>
+            <div className="flex items-center gap-2">
+              <Link to="/store" className="p-2 rounded-full hover:bg-surface-container transition-all duration-300 ease-out-expo">
+                <Search className="text-primary w-5 h-5" />
+              </Link>
+            </div>
           )}
 
           {isReading && (
@@ -81,13 +92,13 @@ export default function Layout() {
             </div>
           )}
 
-          <div className="w-10 h-10 rounded-full bg-surface-container-high border-2 border-primary-container overflow-hidden">
+          <Link to="/profile" className="w-10 h-10 rounded-full bg-surface-container-high border-2 border-primary-container overflow-hidden block">
             <img
               alt="User Profile Avatar"
               className="w-full h-full object-cover"
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfI5AbRFUIenVg2BxtngYscoP_bL0_1r_mjqF_fL89_haqlJqMHbxvxfxiSO0CGbB895nWWSOzylwyRoqujyvNxd0cAcaKoXSr-p8CZ1f-IOnGwog0GfoseB7dS-WM7PWguw7Jp9M3AJPtHo0hvecGmYIx1Tx0rWKXwzBUVY_W8pVvzG5Vg23_qVWegLJXc4VhU10yL_4RVqxQO-Y-Q7sV5E5mAiCQ7bmGqOgk6EMlPL2jJBLMjcd211dZ7YcVscMEqKtDDWCjaAQ"
             />
-          </div>
+          </Link>
         </div>
       </header>
 
